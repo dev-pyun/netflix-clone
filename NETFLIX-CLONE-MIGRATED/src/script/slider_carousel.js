@@ -161,7 +161,7 @@
 
       const visibleCards = estimateVisibleCount(container, items[0], gapPx);
 
-      // 이동 후 화면에 보이는 영역이 "순수 원본" 또는 "순수 클론"만 포함하도록
+      // ✅ 핵심: 이동 후 화면에 보이는 영역이 "순수 원본" 또는 "순수 클론"만 포함하도록
       if (dir > 0) { // 오른쪽으로
         const lastVisible = target + visibleCards - 1;
         const originalEnd = N + ORIGINAL_LEN - 1;

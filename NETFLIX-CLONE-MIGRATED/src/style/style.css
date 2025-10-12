@@ -186,106 +186,13 @@ main {
 .slider-item {
   display: grid;
   cursor: pointer;
-  transition: transform 0.3s ease, z-index 0.3s ease;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
   flex: 0 0 auto;
   padding: var(--spacing-4);
   scroll-snap-type: start;
-  position: relative; /* 자식 요소의 absolute 기준점 */
-  box-shadow: var(--shadow); /* 그림자 추가 */
-}
-
-.slider-item:hover {
-  transform: scale(1.1);
-  /* ⭐ 핵심 2: z-index를 높게 설정하여 다른 카드 위에 덮어씌웁니다. */
-  z-index: 50;
-
-  /* z-index를 hover 시작 시점에 바로 적용 (z-index 0s linear 0.3s) */
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), z-index 0s linear 0.3s;
-  
-  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-}
-
-.slider-item-detail {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--background);
-  color: var(--foreground);
-  border-radius: var(--radius);
-  padding: var(--spacing-8);
-  
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none; /* 숨김 상태 클릭 방지 */
-  transition: opacity 0.3s ease;
-  z-index: 30;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-/* Hover 시 표시 */
-.slider-item:hover .slider-item-detail {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-/* 버튼 스타일 */
-.slider-item-detail .icon-btn {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--fonts-sm);
-  transition: background-color 0.2s ease;
-}
-
-.slider-item-detail .icon-btn:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
-.detail-header {
-  display: flex;
-  gap: var(--spacing-8);
-  margin-bottom: var(--spacing-8);
-  margin-left: var(--spacing-8);
-}
-.detail-meta, .detail-tags {
-  display: flex;
-  gap: var(--spacing-8);
-  margin-left: var(--spacing-12);
-  margin-bottom: var(--spacing-8);
-  font-size: var(--fonts-sm);
-  color: var(--muted);
-}
-.detail-meta .meta-rating {
-  color: #46d369; /* 넷플릭스 녹색 */
-  font-weight: bold;
-}
-
-/* 이미지와 상세 정보가 같은 그리드 영역을 차지하도록 */
-.slider-item a,
-.slider-item .slider-item-detail {
-    grid-area: 1 / 1;
-}
-
-/* 랭킹 슬라이더 카드는 예외 처리 */
-.top-10-rank-slider .slider-item:hover {
-  transform: none; /* 랭킹 카드는 확대 안함 */
-  z-index: 1;
-}
-.top-10-rank-slider .slider-item-detail {
-  /* 랭킹 슬라이더에서는 상세 정보 표시 안함 */
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
 }
 
 .top-10-rank-slider .slider-item {

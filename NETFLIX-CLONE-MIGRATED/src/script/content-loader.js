@@ -115,31 +115,12 @@ class ContentLoader {
       rankingSvg = this.getRankingSvg(item.rank);
     }
 
-    const buttonsHtml = `
-      <div class="slider-item-detail">
-        <div class="detail-header">
-          <button class="icon-btn btn-play" aria-label="재생">▶</button>
-          <button class="icon-btn btn-like" aria-label="좋아요">👍</button>
-          <button class="icon-btn btn-info" aria-label="상세 정보">i</button>
-        </div>
-        <div class="detail-meta">
-          <span class="meta-rating">98% 일치</span>
-          <span class="meta-age">15+</span>
-        </div>
-        <div class="detail-tags">
-          <span>#${item.genre || '시리즈'}</span>
-          <span>#${item.mood || '액션'}</span>
-        </div>
-      </div>
-    `;
-
     return `
       <li class="slider-item" data-id="${item.id}">
         ${rankingSvg}
         <a href="#${item.id}">
           <img src="${item.image}" alt="${item.title} Poster" loading="lazy">
         </a>
-        ${buttonsHtml}
       </li>
     `;
   }
